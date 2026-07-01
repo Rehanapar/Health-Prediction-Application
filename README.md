@@ -1,54 +1,81 @@
-Health Prediction Application
-Overview
+# Health Prediction Application
 
-The Health Prediction Application is a Django-based web application that allows users to manage patient health records and predict possible health conditions using a Machine Learning model.
+## Overview
 
-The application performs CRUD (Create, Read, Update, Delete) operations, validates user inputs, stores patient records in SQLite, and automatically generates health predictions based on blood test values.
+The **Health Prediction Application** is a Django-based web application that allows users to manage patient health records and predict possible health conditions using an external AI service.
 
-Features:
+The application performs CRUD (Create, Read, Update, Delete) operations, validates user inputs, stores patient records in SQLite, and automatically generates AI-based health predictions from blood test values using the OpenRouter API.
 
-Add new patient records
-View all patient records
-Update patient information
-Delete patient records
-Automatic health prediction using Machine Learning
-Input validation
-SQLite database for persistent storage
-Clean and responsive user interface
+## Features
 
-Technologies Used
-Backend
-Python 3
-Django
-Frontend
-HTML5
-CSS3
-Database
-SQLite
-Machine Learning
-Scikit-learn
-Pandas
-Joblib
-Random Forest Classifier
+- Add new patient records
+- View all patient records
+- Update patient information
+- Delete patient records
+- AI-powered health prediction using the OpenRouter API
+- Automatic generation of health remarks
+- Input validation
+- SQLite database for persistent storage
+- Clean and responsive user interface
 
-Dataset
+## Technologies Used
 
-The Machine Learning model is trained using a dataset containing:
+### Backend
 
-Glucose
-Haemoglobin
-Cholesterol
-Health Condition
+- Python 3
+- Django
 
-The trained model is stored as:
+### Frontend
 
-patients/ml/health_model.pkl
+- HTML5
+- CSS3
 
-Future Improvements:
+### Database
 
-Integration with external Health AI APIs
-Patient search and filtering
-User authentication
-Dashboard with charts and analytics
-Email notifications
-PDF report generation
+- SQLite
+
+### AI Integration
+
+- OpenRouter API
+- OpenAI GPT-4.1 Nano (via OpenRouter)
+
+## How It Works
+
+1. The user enters the patient's:
+   - Full Name
+   - Date of Birth
+   - Email Address
+   - Glucose
+   - Haemoglobin
+   - Cholesterol
+
+2. Django validates the entered data.
+
+3. The application sends the blood test values to the OpenRouter AI API.
+
+4. The AI predicts the patient's possible health condition.
+
+5. The predicted result is automatically stored in the **Remarks** field.
+
+6. The patient record is saved in the SQLite database.
+
+## Input Validation
+
+The application validates:
+
+- Full Name must contain at least 3 characters.
+- Email must be in a valid format and unique.
+- Date of Birth cannot be a future date.
+- Glucose must be greater than 0.
+- Haemoglobin must be greater than 0.
+- Cholesterol must be greater than 0.
+
+## Future Improvements
+
+- Integration with specialized healthcare AI services
+- Patient search and filtering
+- User authentication and role-based access
+- Dashboard with charts and analytics
+- Email notifications
+- PDF report generation
+- Export patient records to Excel or CSV
